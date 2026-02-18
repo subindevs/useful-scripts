@@ -7,7 +7,7 @@ echo ""
 
 
 # Prompt for target user
-read -p "Enter target username: " TARGET_USER
+read -p "Enter target username: " TARGET_USER </dev/tty
 
 # Check if user exists
 if ! id "$TARGET_USER" &>/dev/null; then
@@ -16,7 +16,7 @@ if ! id "$TARGET_USER" &>/dev/null; then
 fi
 
 # Prompt for vscode-server source path
-read -p "Enter path to .vscode-server (press Enter for default: $HOME/.vscode-server): " VSCODE_SOURCE
+read -p "Enter path to .vscode-server (press Enter for default: $HOME/.vscode-server): " VSCODE_SOURCE </dev/tty
 VSCODE_SOURCE=${VSCODE_SOURCE:-$HOME/.vscode-server}
 
 # Check if vscode-server directory exists
@@ -30,7 +30,7 @@ VSCODE_PATH=$(which code)
 
 if [ -z "$VSCODE_PATH" ]; then
     echo "⚠️  VS Code not found in PATH."
-    read -p "Enter VS Code full path manually (e.g. /mnt/c/.../bin/code):  " VSCODE_PATH
+    read -p "Enter VS Code full path manually (e.g. /mnt/c/.../bin/code):  " VSCODE_PATH </dev/tty
 fi
 
 VSCODE_BIN_DIR=$(dirname "$VSCODE_PATH")
@@ -46,7 +46,7 @@ echo "  Source dir     : $VSCODE_SOURCE"
 echo "  Destination    : $TARGET_HOME/.vscode-server"
 echo "  VS Code PATH   : $VSCODE_PATH"
 echo ""
-read -p "Proceed? (y/n): " CONFIRM
+read -p "Proceed? (y/n): " CONFIRM </dev/tty
 if [[ "$CONFIRM" != "y" ]]; then
     echo "Aborted."
     exit 0

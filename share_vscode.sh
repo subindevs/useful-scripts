@@ -60,7 +60,7 @@ echo "[2/3] Setting ownership..."
 sudo chown -R "$TARGET_USER:$TARGET_USER" "$TARGET_HOME/.vscode-server"
 
 echo "[3/3] Adding VS Code to PATH..."
-sudo -u "$TARGET_USER" bash -c "grep -q 'vscode' $TARGET_HOME/.bashrc || echo 'export PATH=\"\$PATH:$VSCODE_BIN_DIR\"' >> $TARGET_HOME/.bashrc"
+sudo -u "$TARGET_USER" bash -c "grep -qF 'VS Code' $TARGET_HOME/.bashrc || echo 'export PATH=\"\$PATH:$VSCODE_BIN_DIR\"' >> $TARGET_HOME/.bashrc"
 
 echo ""
 echo "✓ Setup complete for $TARGET_USER!"
